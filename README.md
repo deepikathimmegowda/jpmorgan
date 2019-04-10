@@ -5,13 +5,13 @@ As an investment bank we have a requirement to maintain the total quantity of a 
 ### Implementation details
 
 To display real time trading data, the front end should interact with backend restAPIs. 
-This code project only includes backend APIs and do not include front end. The app can be extended to display real time data on UI.
+This code project only includes backend APIs and do not include front end. The app can be extended to display real time data on UI by implementing front end.
 
 **The APIs exposed are**
 
 1. GET method  : /tradeEvents   - this API returns all the tradeEvents added in trading module
-1. POST method : /tradeEvents   - this API accepts json array and stored events in trading module
-1. GET method  : /tradeOutcomes - this API returns all the computed trading Outcome from Tradeevents preent in trading module 
+1. POST method : /tradeEvents   - this API accepts json array and stored trade events in trading module
+1. GET method  : /tradeOutcomes - this API computes trading Outcome from Tradeevents preent in trading module and returns Outcomes json array
 1. GET method  : /clearEvents   - this API resets trade Events added so far in trading modules
 1. GET method  : /clearOutcomes - this API resets trade Outcomes added so far in trading modules
 1. GET method  : /clearAll      - this API clears both trade events and trade outcomes in trading module
@@ -21,13 +21,12 @@ This code project only includes backend APIs and do not include front end. The a
 **Usage of APIs**
 
 1. When a new trade is made, User will insert trade events (can be list of trade Events) from front end. 
-1. From front end on periodic basis or when a new trade event is added, can invoke /tradeOutcomes GET to fetch results
+1. From frontend on periodic basis or when a new trade event is added, can invoke /tradeOutcomes GET to fetch updated outcomes
 1. All the trade events and outcomes will be stored in TradingModule.
 1. As this application do not use any Database or cache server or session objects to persist trade events and its trade outcomes, to storing `tradeEvents` and `tradeOutcome` as static object in TradingModule class ( this is small scale implementation )
 1. Any number of trade events can be added
 1. When /tradeOutcomese GET API is invoked, trade outcome is computed and returned
 1. User can use /clearEvents, /clearOutcomes, /clearAll as cleanup job
-
 
 
 **project package details**
@@ -60,11 +59,10 @@ _**/src/main/java**_
 3. com.jpmorgan.trading.services
      *  TradingServiceImplTests
 
-
 Enchancments: TODO** 
 
 1. Add exception Handling
-1. Add reqiored logging
+1. Add required logging
 1. Add validation for input post data
 1. Using IoC library
 1. Check Code coverage and add more TCs
