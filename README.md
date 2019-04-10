@@ -75,4 +75,5 @@ Enchancments: TODO**
 
 Knows Issues:
 
-1. *Multiple versions of a trade with the same trade ID can be processed, however, only the trade with the highest version should remain part of the aggregated position record* -  To solve: create version list and keep track of version while considering higher version trade
+1. *Multiple versions of a trade with the same trade ID can be processed, however, only the trade with the highest version should remain part of the aggregated position record*
+ only one edge case is missed : scenarion SecurityIdentifier -> KLO -  To solve: create version list and keep track of version while considering higher version trade
