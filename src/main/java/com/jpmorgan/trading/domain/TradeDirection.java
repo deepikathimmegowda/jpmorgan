@@ -1,6 +1,6 @@
 package com.jpmorgan.trading.domain;
 
-public enum TradingDirection {
+public enum TradeDirection {
 	BUY,
 	SELL
 }

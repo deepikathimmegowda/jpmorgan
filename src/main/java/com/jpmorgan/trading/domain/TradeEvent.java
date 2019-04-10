@@ -1,15 +1,58 @@
 package com.jpmorgan.trading.domain;
 
 public class TradeEvent {
-	 private int _tradeID;
-	 private int _version;
-	 private String _securityVersion;
-	 private int _tradeQuantity;
-	 private TradingDirection _tradeDirection;
-	 private String _account;
-	 private TradingOperation _operation;
+	 private int tradeID;
+	 private int version;
+	 private String securityIdentifier;
+	 private int tradeQuantity;
+	 private TradeDirection tradeDirection;
+	 private String account;
+	 private TradeOperation tradeOperation;
 	 
-	 public int tradeID() {
+	 public int getTradeID() {
+		return tradeID;
+	 }
+	 public void setTradeID(int tradeID) {
+		this.tradeID = tradeID;
+	 }
+	 public int getVersion() {
+		return version;
+	 }
+	 public void setVersion(int version) {
+			this.version = version;
+	 } 
+	 public String getSecurityIdentifier() {
+			return securityIdentifier;
+	 }
+	 public void setSecurityIdentifier(String securityIdentifier) {
+			this.securityIdentifier = securityIdentifier;
+	 }
+		public int getTradeQuantity() {
+			return tradeQuantity;
+		}
+		public void setTradeQuantity(int tradeQuantity) {
+			this.tradeQuantity = tradeQuantity;
+		}
+		public TradeDirection getTradeDirection() {
+			return tradeDirection;
+		}
+		public void setTradeDirection(TradeDirection tradeDirection) {
+			this.tradeDirection = tradeDirection;
+		}
+		public String getAccount() {
+			return account;
+		}
+		public void setAccount(String account) {
+			this.account = account;
+		}
+		public TradeOperation getTradeOperation() {
+			return tradeOperation;
+		}
+		public void setTradeOperation(TradeOperation tradeOperation) {
+			this.tradeOperation = tradeOperation;
+		}
+	 
+	 /*public int tradeID() {
 		 return _tradeID;
 	 }
 	 
@@ -25,12 +68,12 @@ public class TradeEvent {
 		 _version = value;
 	 }
 	 
-	 public String securityVersion() {
-		 return _securityVersion;
+	 public String securityIdentifier() {
+		 return _securityIdentifier;
 	 }
 	 
-	 public void securityVersion(String value) {
-		 _securityVersion = value;
+	 public void securityIdentifier(String value) {
+		 _securityIdentifier = value;
 	 }
 	 
 	 public int tradeQuantity() {
@@ -41,11 +84,11 @@ public class TradeEvent {
 		 _tradeQuantity = value;
 	 }
 	 
-	 public TradingDirection tradeDirection() {
+	 public TradeDirection tradeDirection() {
 		 return _tradeDirection;
 	 }
 	 
-	 public void tradeDirection(TradingDirection value) {
+	 public void tradeDirection(TradeDirection value) {
 		 _tradeDirection = value;
 	 }
 	 
@@ -57,11 +100,11 @@ public class TradeEvent {
 		 _account = value;
 	 }
 	 
-	 public TradingOperation operation() {
-		 return _operation;
+	 public TradeOperation tradeOperation() {
+		 return _tradeOperation;
 	 }
 	 
-	 public void operation(TradingOperation value) {
-		 _operation = value;
-	 }
+	 public void tradeOperation(TradeOperation value) {
+		 _tradeOperation = value;
+	 }*/
 }

@@ -1,6 +1,6 @@
 package com.jpmorgan.trading.domain;
 
-public enum TradingOperation {
+public enum TradeOperation {
 	NEW,
 	AMEND,
 	CANCEL

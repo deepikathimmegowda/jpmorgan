@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TradeOutcome {
-	 private String _id;
-	 private String _account;
-	 private String _instrument;
-	 private int _tradeQuantity;
-	 private List<Integer> _tradeID;
-	 
-	 public String id() {
+	 private String id;
+	 private String account;
+	 private String instrument;
+	 private int tradeQuantity;
+	 private int version;
+	 private List<Integer> tradeID;
+
+	 /*public String id() {
 		 return _id;
 	 }
 	 
@@ -42,15 +43,84 @@ public class TradeOutcome {
 		 _tradeQuantity = value;
 	 }
 	 
+	 public int version() {
+		 return _version;
+	 }
+	 
+	 public void version(int value) {
+		 _version = value;
+	 }
+	 
 	 public List<Integer> tradeID() {
 		 return _tradeID;
 	 }
 	 
 	 public void tradeID(int value) {
 		 _tradeID.add(value);
+	 }*/
+	
+	 public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getAccount() {
+		return account;
+	}
+
+	public void setAccount(String account) {
+		this.account = account;
+	}
+
+	public String getInstrument() {
+		return instrument;
+	}
+
+	public void setInstrument(String instrument) {
+		this.instrument = instrument;
+	}
+
+	public int getTradeQuantity() {
+		return tradeQuantity;
+	}
+
+	public void setTradeQuantity(int tradeQuantity) {
+		this.tradeQuantity = tradeQuantity;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+	public List<Integer> getTradeID() {
+		return tradeID;
+	}
+
+	public void setTradeID(List<Integer> tradeID) {
+		this.tradeID = tradeID;
+	}
+	
+	public void addTradeID(int value) {
+		if(tradeID == null) tradeID = new ArrayList<Integer>();
+		 tradeID.add(value);
+	 }
+
+	public boolean tradeIDContains(int value) {
+		 return tradeID.contains(value);
+	 }
+	 
+	 public void tradeIDClear() {
+		 tradeID.clear();
 	 }
 	 
 	 public TradeOutcome() {
-		 _tradeID = new ArrayList<Integer>();
+		 tradeID = new ArrayList<Integer>();
 	 }
 }

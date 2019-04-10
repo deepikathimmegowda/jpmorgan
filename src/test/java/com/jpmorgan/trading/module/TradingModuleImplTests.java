@@ -1,5 +1,4 @@
-package com.jpmorgan.trading.controllers;
-
+package com.jpmorgan.trading.module;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,23 +10,26 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.jpmorgan.trading.services.TradingService;
 import com.jpmorgan.trading.domain.TradeDirection;
 import com.jpmorgan.trading.domain.TradeEvent;
 import com.jpmorgan.trading.domain.TradeOperation;
 import com.jpmorgan.trading.domain.TradeOutcome;
+import com.jpmorgan.trading.module.TradingModule;
+import com.jpmorgan.trading.module.TradingModuleImpl;
+import com.jpmorgan.trading.services.TradingServiceImpl;
 
 @RunWith(MockitoJUnitRunner.class)
-public class TradingControllerTests {
-
-	private TradingController tradingController;
-	private TradingService tradingService;
+public class TradingModuleImplTests {
+	
+	private TradingModuleImpl tradingModule;
+	
 	private List<TradeEvent> tradeEvents;
 	private List<TradeOutcome> tradeOutcomes;
 	TradeEvent event1;
 	TradeEvent event2;
 	TradeEvent event3;
 	TradeEvent event4;
+	TradeEvent event5;
 	
 	TradeOutcome outcome1;
 	TradeOutcome outcome2;
@@ -36,18 +38,14 @@ public class TradingControllerTests {
 	
 	@Before
 	public void setup() {
-		tradingService = Mockito.mock(TradingService.class);
+		tradingModule = new TradingModuleImpl();
 		
-		tradingController = new TradingController() { 
-			@Override
-			protected TradingService getTradingService() {
-				return tradingService;
-		}};
-		
+
 		event1 = new TradeEvent();
 		event2 = new TradeEvent();
 		event3 = new TradeEvent();
 		event4 = new TradeEvent();
+		event5 = new TradeEvent();
 		
 		event1.setTradeID(1234);
 		event1.setVersion(1);
@@ -80,6 +78,14 @@ public class TradingControllerTests {
 		event4.setTradeDirection(TradeDirection.BUY);
 		event4.setAccount("ACC-2345");
 		event4.setTradeOperation(TradeOperation.CANCEL);
+				
+		event5.setTradeID(2233);
+		event5.setVersion(1);
+		event5.setSecurityIdentifier("RET");
+		event5.setTradeQuantity(100);
+		event5.setTradeDirection(TradeDirection.SELL);
+		event5.setAccount("ACC-3456");
+		event5.setTradeOperation(TradeOperation.NEW);
 		
 		outcome1 = new TradeOutcome();
 		outcome2 = new TradeOutcome();
@@ -100,56 +106,77 @@ public class TradingControllerTests {
 	}
 	
 	@Test
-	public void testgetTradeEvents() 
-	{
+	public void testAddTradeEvents() {		
 		tradeEvents = new ArrayList<TradeEvent>();
 		tradeEvents.add(event1);
-		tradeEvents.add(event2);
-		tradeEvents.add(event3);
-		Mockito.when(tradingService.getTradeEvents()).thenReturn(tradeEvents);
-		List<TradeEvent> result = tradingController.getTradeEvents();
-		Assert.assertTrue(result.size() == 3);
-	}
-
-	@Test
-    public void testAddTradeEvents() {
-		tradeEvents = new ArrayList<TradeEvent>();
-		tradeEvents.add(event1);
-		tradeEvents.add(event2);
-		tradeEvents.add(event3);
-		Mockito.when(tradingService.createTradeEvents(tradeEvents)).thenReturn(true);
-		boolean isAdded = tradingController.addTradeEvents(tradeEvents);
+		boolean isAdded = tradingModule.addTradeEvents(tradeEvents);
 		Assert.assertTrue(isAdded);
 	}
 	
 	@Test
-    public void testGetTradeOutcomes() {
+	public void testAddAndGetTradeEvents() {		
+		tradeEvents = new ArrayList<TradeEvent>();
+		tradeEvents.add(event1);
+		tradeEvents.add(event2);
+		tradingModule.addTradeEvents(tradeEvents);
+		List<TradeEvent> addedEvents = tradingModule.getTradeEvents();
+		Assert.assertTrue(addedEvents.size() == 2);
+	}
+	
+	@Test
+	public void testAddTradeOutcomes() {		
 		tradeOutcomes = new ArrayList<TradeOutcome>();
 		tradeOutcomes.add(outcome1);
 		tradeOutcomes.add(outcome2);
-		Mockito.when(tradingService.computeTradeOutcome()).thenReturn(tradeOutcomes);
-		List<TradeOutcome> resultOutcomes = tradingController.getTradeOutcomes();
-		Assert.assertTrue(resultOutcomes.size() == 2);
-    }
+		boolean isAdded = tradingModule.setTradeOutcomes(tradeOutcomes);
+		Assert.assertTrue(isAdded);
+	}
 	
 	@Test
-    public void testClearEvents() {
-		Mockito.when(tradingService.clearTradeEvents()).thenReturn(true);
-		boolean isCleared = tradingController.clearEvents();
-		Assert.assertTrue(isCleared);
-    }
+	public void testSetandGetTradeOutcomes() {		
+		tradeOutcomes = new ArrayList<TradeOutcome>();
+		tradeOutcomes.add(outcome1);
+		tradeOutcomes.add(outcome2);
+		tradingModule.setTradeOutcomes(tradeOutcomes);
+		List<TradeOutcome> addedOutcomes = tradingModule.getTradeOutcomes();
+		Assert.assertTrue(addedOutcomes.size() == 2);
+	}
 	
 	@Test
-    public void testclearOutcomes() {
-		Mockito.when(tradingService.clearTradeOutcomes()).thenReturn(true);
-		boolean isCleared = tradingController.clearOutcomes();
+	public void testResetTradeEvents() {		
+		tradeEvents = new ArrayList<TradeEvent>();
+		tradeEvents.add(event1);
+		tradeEvents.add(event2);
+		tradingModule.addTradeEvents(tradeEvents);
+		boolean isCleared = tradingModule.resetTradeEvents();
 		Assert.assertTrue(isCleared);
-    }
-
+	}
+	
 	@Test
-    public void testClearAll() {
-		Mockito.when(tradingService.clearAll()).thenReturn(true);
-		boolean isCleared = tradingController.clearAll();
+	public void testResetTradeOutcomes() {		
+		tradeOutcomes = new ArrayList<TradeOutcome>();
+		tradeOutcomes.add(outcome1);
+		tradeOutcomes.add(outcome1);
+		tradingModule.setTradeOutcomes(tradeOutcomes);
+		boolean isCleared = tradingModule.resetTradeOutcomes();
 		Assert.assertTrue(isCleared);
-    }
+	}
+	
+	@Test
+	public void testResetAll() {	
+		tradeEvents = new ArrayList<TradeEvent>();
+		tradeEvents.add(event1);
+		tradeEvents.add(event2);
+		tradingModule.addTradeEvents(tradeEvents);
+		
+		tradeOutcomes = new ArrayList<TradeOutcome>();
+		tradeOutcomes.add(outcome1);
+		tradeOutcomes.add(outcome1);
+		
+		tradingModule.addTradeEvents(tradeEvents);
+		tradingModule.setTradeOutcomes(tradeOutcomes);
+		
+		boolean isCleared = tradingModule.resetAll();
+		Assert.assertTrue(isCleared);
+	}
 }
