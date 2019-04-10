@@ -282,14 +282,14 @@ public class TradingServiceImplTests {
 
 	@Test
 	public void testIsProductQuantityIncrement() {
-		tradingService.isProductQuantityIncrement(event1);
-		Assert.assertTrue(true);
+		boolean inc = tradingService.isProductQuantityIncrement(event1);
+		Assert.assertTrue(inc);
 	}
 
 	@Test
 	public void testisProductQuantityDecrement() {
-		tradingService.isProductQuantityIncrement(event5);
-		Assert.assertTrue(true);
+		boolean dec = tradingService.isProductQuantityDecrement(event5);
+		Assert.assertTrue(dec);
 	}
 
 }
