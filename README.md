@@ -75,11 +75,9 @@ Enchancments: TODO**
 1. Validation https headers for APIs request
 
 Knows Issues:
-
 1. *Multiple versions of a trade with the same trade ID can be processed, however, only the trade with the highest version should remain part of the aggregated position record*
  only one edge case is missed : scenarion SecurityIdentifier -> KLO -  To solve: create version list and keep track of version while considering higher version trade
  
-Task:
-1. *Due to scaling considerations, trade events can arrive in any order. Once the solution is completed for sequentially incrementing IDs and versions in the below input data. Test cases should be added to cater for out of order and other corner cases.*
+Condition : *Due to scaling considerations, trade events can arrive in any order. Once the solution is completed for sequentially incrementing IDs and versions in the below input data. Test cases should be added to cater for out of order and other corner cases.*
 - To address this - everytime a new event is added, invoke /tradeOutcomes to fetch new outcomes.
 - To make this efficient there should be proper synchronization between added trade events and fetching trade Outcomes.
