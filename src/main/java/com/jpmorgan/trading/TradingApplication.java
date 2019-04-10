@@ -11,6 +11,6 @@ public class TradingApplication {
 
 		// Use below method if required to initialize app on load, for app manual system
 		// testing
-		Initialize.InitializeTradeEventsForApp();
+		//Initialize.InitializeTradeEventsForApp();
 	}
 }
