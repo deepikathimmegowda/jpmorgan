@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="java" project="trading" tests="24" started="24" failures="0" errors="0" ignored="0">
+  <testsuite name="com.jpmorgan.trading.services.TradingServiceImplTests" time="0.079">
+    <testcase name="testGetNewTradeOutcome" classname="com.jpmorgan.trading.services.TradingServiceImplTests" time="0.058"/>
+    <testcase name="tesComputeTradeOutcome_multiTrades" classname="com.jpmorgan.trading.services.TradingServiceImplTests" time="0.012"/>
+    <testcase name="testClearTradeEvents" classname="com.jpmorgan.trading.services.TradingServiceImplTests" time="0.0"/>
+    <testcase name="testisProductQuantityDecrement" classname="com.jpmorgan.trading.services.TradingServiceImplTests" time="0.001"/>
+    <testcase name="testGetTradeEvents" classname="com.jpmorgan.trading.services.TradingServiceImplTests" time="0.0"/>
+    <testcase name="testCreateTradeEvents" classname="com.jpmorgan.trading.services.TradingServiceImplTests" time="0.001"/>
+    <testcase name="testIsProductQuantityIncrement" classname="com.jpmorgan.trading.services.TradingServiceImplTests" time="0.0"/>
+    <testcase name="tesComputeTradeOutcome_SellDirection" classname="com.jpmorgan.trading.services.TradingServiceImplTests" time="0.001"/>
+    <testcase name="testClearTradeOutcomes" classname="com.jpmorgan.trading.services.TradingServiceImplTests" time="0.0"/>
+    <testcase name="testClearAll" classname="com.jpmorgan.trading.services.TradingServiceImplTests" time="0.001"/>
+    <testcase name="tesComputeTradeOutcome_BuyDirection" classname="com.jpmorgan.trading.services.TradingServiceImplTests" time="0.005"/>
+  </testsuite>
+  <testsuite name="com.jpmorgan.trading.module.TradingModuleImplTests" time="0.003">
+    <testcase name="testAddTradeOutcomes" classname="com.jpmorgan.trading.module.TradingModuleImplTests" time="0.001"/>
+    <testcase name="testSetandGetTradeOutcomes" classname="com.jpmorgan.trading.module.TradingModuleImplTests" time="0.0"/>
+    <testcase name="testAddAndGetTradeEvents" classname="com.jpmorgan.trading.module.TradingModuleImplTests" time="0.0"/>
+    <testcase name="testResetAll" classname="com.jpmorgan.trading.module.TradingModuleImplTests" time="0.001"/>
+    <testcase name="testResetTradeOutcomes" classname="com.jpmorgan.trading.module.TradingModuleImplTests" time="0.0"/>
+    <testcase name="testAddTradeEvents" classname="com.jpmorgan.trading.module.TradingModuleImplTests" time="0.0"/>
+    <testcase name="testResetTradeEvents" classname="com.jpmorgan.trading.module.TradingModuleImplTests" time="0.001"/>
+  </testsuite>
+  <testsuite name="com.jpmorgan.trading.controllers.TradingControllerTests" time="0.031">
+    <testcase name="testclearOutcomes" classname="com.jpmorgan.trading.controllers.TradingControllerTests" time="0.028"/>
+    <testcase name="testgetTradeEvents" classname="com.jpmorgan.trading.controllers.TradingControllerTests" time="0.001"/>
+    <testcase name="testAddTradeEvents" classname="com.jpmorgan.trading.controllers.TradingControllerTests" time="0.0"/>
+    <testcase name="testClearAll" classname="com.jpmorgan.trading.controllers.TradingControllerTests" time="0.001"/>
+    <testcase name="testGetTradeOutcomes" classname="com.jpmorgan.trading.controllers.TradingControllerTests" time="0.0"/>
+    <testcase name="testClearEvents" classname="com.jpmorgan.trading.controllers.TradingControllerTests" time="0.001"/>
+  </testsuite>
+</testrun>

@@ -14,15 +14,12 @@ import com.jpmorgan.trading.services.TradingServiceImpl;
 
 @RestController
 public class TradingController 
-{
-	//@Autowired(required=true)
-	//public TradingService tradingService;
-	
+{	
 	@GetMapping("/test")
 	public String test() {
 		return "Test API";
 	}
-	 
+	
 	@GetMapping("/tradeEvents")
     public List<TradeEvent> getTradeEvents() {
         return getTradingService().getTradeEvents(); 
